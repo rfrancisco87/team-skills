@@ -41,10 +41,30 @@ only on approval — set In Review, reassign to the human owner, @-mention.
 Multica activates agents on assignment, comment, or mention, so reassigning and
 @-mentioning together reliably wakes the next agent.
 
+## Comment protocol (mandatory)
+
+Every agent that works a ticket leaves **one** handoff comment when it hands off,
+in this compact format:
+
+```
+Done: <what you did — compact but understandable, no walls of text>
+Next: <what must happen next, if applicable> — @<exact agent or human>
+PR:   <link — mandatory whenever a PR exists>
+```
+
+Rules:
+- **Be concise.** Compress the information; skip preamble and don't restate the
+  ticket. Compact but understandable.
+- **PR link is mandatory** whenever a PR exists.
+- **Always @-mention whoever acts next** — an agent for the In Progress loop, the
+  human at In Review or Blocked. If nothing is next, say so.
+- Write it so an agent with zero prior context could resume from the comment alone.
+
 ## Golden rules (all agents)
 
-- **Start = In Progress.** The moment you begin an assigned Todo item, set it to
-  In Progress.
+- **Start = In Progress (mandatory).** The instant you begin working a ticket, it
+  must be In Progress — if it isn't already, set it. No agent works a ticket that
+  is still in Backlog or Todo. This applies to every agent, every time.
 - **Never leave an issue silently.** Whenever you stop, the ticket must name who
   acts next — the right assignee (agent, for the In Progress loop) or the human
   (at In Review / Blocked) — with an @-mention.

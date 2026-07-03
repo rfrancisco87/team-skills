@@ -7,7 +7,7 @@ A secure, well-structured agent team that develops and ships real projects
 - **`README.md`** (this file) — how it works, the board, the roster, the skill
   map, the setup guide, and operational hardening.
 - **`ROLES.md`** — paste-ready instructions for all ten agents.
-- **`skills/`** — eleven `SKILL.md` capability bundles, each in its own folder.
+- **`skills/`** — fourteen `SKILL.md` capability bundles, each in its own folder.
 
 ## Contents
 
@@ -66,14 +66,26 @@ Two rules make this work:
 *(This is the full definition in `skills/ticket-workflow/SKILL.md`, attached to
 every agent.)*
 
+**Mandatory for every agent:** set the ticket to **In Progress the instant you
+start** working it; and leave **one concise handoff comment** every time you hand
+off — `Done:` what you did / `Next:` who acts next (@mention the exact agent or
+human) / `PR:` link (mandatory whenever a PR exists). Compact but understandable —
+no walls of text.
+
 ---
 
 ## 3. How work flows (the three lanes)
 
+**Every ticket enters through the Architect.** You assign each new ticket to the
+Architect; he triages it, rewrites it if unclear, decides the lane, splits it into
+sub-tickets when needed, and assigns each to the right producer (Builder / Senior
+Copywriter / Designer / DevOps) in **Todo**. From there each lane runs its
+producer → reviewer → human loop.
+
 **Code**
 
 ```
-Backlog ─▶ Architect specs ─▶ Todo ─▶ Builder (In Progress)
+New ticket ─▶ Architect (triage · rewrite · spec · split · route) ─▶ Todo ─▶ Builder (In Progress)
    ┌──────────────────────────────────────────────────────────┐
    │  Builder builds → reassign Reviewer → Reviewer audits      │  all
    │  issues → reassign Builder → fix → reassign Reviewer …     │  In Progress
@@ -99,7 +111,7 @@ design-QAs the built UI while the Builder's ticket is In Progress.
 
 | Agent | Provider (suggested) | Owns |
 |---|---|---|
-| Architect | Claude Code (strong reasoning) | Spec, acceptance criteria, risk tag, sub-issues |
+| Architect | Claude Code (strong reasoning) | **Dispatcher** — triage, rewrite, spec, sub-tickets, routing |
 | Builder | Claude Code / Codex | Implementation, PRs |
 | Reviewer | Codex (≠ Builder) | Security + convention review |
 | Tester | OpenCode / Codex | Vitest + RTL, acceptance verification |
@@ -118,7 +130,7 @@ Minimum viable loops: **Architect → Builder → Reviewer** (code),
 
 ## 5. Skill ↔ agent map
 
-Eleven skills in `skills/`. `ticket-workflow` is attached to **all** agents.
+Fourteen skills in `skills/`. `ticket-workflow` is attached to **all** agents.
 
 | Skill | Attached to |
 |---|---|
@@ -126,6 +138,8 @@ Eleven skills in `skills/`. `ticket-workflow` is attached to **all** agents.
 | `stack-conventions` | Architect, Builder, Reviewer |
 | `pr-and-git` | Builder, DevOps |
 | `security-review` | Reviewer |
+| `ci-and-quality-gates` | Builder, Reviewer, DevOps |
+| `runtime-security` | Reviewer, DevOps |
 | `testing` | Tester |
 | `migrations-and-secrets` | DevOps |
 | `copywriting` | Senior Copywriter |
@@ -133,6 +147,7 @@ Eleven skills in `skills/`. `ticket-workflow` is attached to **all** agents.
 | `design-craft` | Designer, Design Reviewer |
 | `design-system` | Designer, Design Reviewer, Builder |
 | `design-review` | Design Reviewer |
+| `skill-curation` | Scribe |
 
 ---
 
